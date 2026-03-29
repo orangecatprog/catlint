@@ -1,23 +1,27 @@
-import { IRKind, type IRFile } from "../src/core/models";
-import { processIRFile, rules } from "./processIRFile";
-import { dryRule } from "./services/dry";
-import { yagniRule } from "./services/yagni";
+import type { IRFile } from "@ir/shared/File";
+import { IRKind } from "@ir/shared/Node";
+import { noUnusedClasses } from "@rules/yagni/no-unused-classes";
+import { noUnusedFunctions } from "@rules/yagni/no-unused-functions";
+import { noUnusedVariables } from "@rules/yagni/no-unused-variables";
 
-const code: IRFile = {
-	name: "file.ts",
+const file: IRFile = {
+	name: "test.ts",
 	extensions: ["ts"],
 	program: [
 		{
-			kind: IRKind.Function,
-			name: "function1",
+			line: 1,
+			kind: IRKind.Codeline,
+			name: "test",
 			value: [
 				{
+					line: 2,
 					kind: IRKind.Function,
-					name: "function2",
+					name: "test",
 					value: [
 						{
-							kind: IRKind.Function,
-							name: "function3",
+							line: 3,
+							kind: IRKind.Variable,
+							name: "test",
 							value: [],
 						},
 					],
@@ -25,32 +29,33 @@ const code: IRFile = {
 			],
 		},
 		{
-			kind: IRKind.Function,
-			name: "function4",
-			value: [
-				{
-					kind: IRKind.Function,
-					name: "function17",
-					value: [
-						{
-							kind: IRKind.Function,
-							name: "function14",
-							value: [],
-						},
-					],
-				},
-			],
-		},
-		{
+			line: 4,
 			kind: IRKind.Class,
-			name: "class1",
+			name: "test2",
 			value: [],
 		},
-    ],
-}
-rules.push(yagniRule);
 
+		{
+			line: 5,
+			kind: IRKind.Variable,
+			name: "test9",
+			value: [],
+		},
 
-const text = processIRFile(code);
+		{
+			line: 6,
+			kind: IRKind.Literal,
+			name: "test",
+			value: [],
+		},
+	],
+};
 
-console.log(text);
+const rules = [noUnusedClasses, noUnusedFunctions, noUnusedVariables];
+
+rules.forEach((rule) => {
+	const message = rule(file);
+	if (message) {
+		console.log(message);
+	}
+});
