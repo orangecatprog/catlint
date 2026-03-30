@@ -1,4 +1,4 @@
-import type { IRNode } from "./Node";
+import type { IRNode } from './Node';
 
 export interface IRFile {
 	name: string;

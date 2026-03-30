@@ -1,8 +1,8 @@
 import type { IRFile } from "@ir/shared/File";
 import { IRKind } from "@ir/shared/Node";
-import { noUnusedClasses } from "@rules/yagni/no-unused-classes";
-import { noUnusedFunctions } from "@rules/yagni/no-unused-functions";
-import { noUnusedVariables } from "@rules/yagni/no-unused-variables";
+import { noUnusedClasses } from "@rules/yagni/noUnusedFeatures/noUnusedClasses";
+import { noUnusedFunctions } from "@rules/yagni/noUnusedFeatures/noUnusedFunctions";
+import { noUnusedVariables } from "@rules/yagni/noUnusedFeatures/noUnusedVariables";
 
 const file: IRFile = {
 	name: "test.ts",

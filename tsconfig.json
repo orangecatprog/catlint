@@ -1,5 +1,5 @@
 {
-  	"compilerOptions": {
+	"compilerOptions": {
 		"baseUrl": ".",
 		// Environment setup & latest features
 		"lib": ["ESNext"],
@@ -27,9 +27,11 @@
 		"noUnusedParameters": true,
 		"noPropertyAccessFromIndexSignature": false,
 		"paths": {
-			"@rules/*": ["src/rules/*"],
-			"@core/*": ["./src/core/*"],
-			"@ir/*": ["./src/ir/*"],
+			"@core/*": ["./src/core/shared/*"],
+			"@rules/*": ["src/rules/shared/*"],
+			"@ir/*": ["./src/ir/shared/*"],
+			"@ir/$/*": ["./src/ir/*"],
+			"@rules/$/*": ["src/rules/*"]
 		}
-  	}
+	}
 }
