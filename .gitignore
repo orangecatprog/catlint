@@ -43,3 +43,6 @@ package-lock.json
 bun.lock
 
 *.ignore.*
+
+# Old files
+legacy

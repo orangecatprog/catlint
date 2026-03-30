@@ -1,5 +1,5 @@
-import type { IRFile } from "@ir/shared/File";
-import { IRKind } from "@ir/shared/Node";
+import type { IRFile } from "@ir/File";
+import { IRKind } from "@ir/Node";
 import { noUnusedClasses } from "@rules/yagni/noUnusedFeatures/noUnusedClasses";
 import { noUnusedFunctions } from "@rules/yagni/noUnusedFeatures/noUnusedFunctions";
 import { noUnusedVariables } from "@rules/yagni/noUnusedFeatures/noUnusedVariables";
