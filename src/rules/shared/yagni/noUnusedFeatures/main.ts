@@ -1,8 +1,10 @@
-import { createGroup } from '@rules/$/models/group/service';
 import { noUnusedClasses } from './noUnusedClasses';
 import { noUnusedFunctions } from './noUnusedFunctions';
 import { noUnusedVariables } from './noUnusedVariables';
+import { createRule } from '@rules/models/rule/service';
 
-export const noUnusedFeatures = createGroup('No unused features', (push) => {
-	[noUnusedVariables, noUnusedFunctions, noUnusedClasses].forEach(push);
-});
+export const noUnusedFeatures = createRule('No unused features', () => [], [
+	noUnusedVariables,
+	noUnusedFunctions,
+	noUnusedClasses,
+]);

@@ -2,8 +2,9 @@ import { IRKind } from '@ir/models/Node';
 import { Level, type Message } from '@rules/models/message/model';
 import type { Rule } from '@rules/models/rule/model';
 import { flattenNodes } from '../utils';
+import { createRule } from '@rules/models/rule/service';
 
-export const noUnusedClasses: Rule = (file) => {
+export const noUnusedClasses: Rule = createRule('No unused classes', (file) => {
 	const messages: Message[] = [];
 	const allNodes = flattenNodes(file.program);
 	const declaredClasses = allNodes.filter((n) => n.kind === IRKind.Class);
@@ -22,4 +23,4 @@ export const noUnusedClasses: Rule = (file) => {
 	}
 
 	return messages;
-};
+});

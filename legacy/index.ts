@@ -1,9 +1,8 @@
+import { lintFile } from "@core/linter";
+import type { LintResult } from "@core/models/lintResult/model";
 import type { IRFile } from "@ir/$/models/File";
 import { IRKind } from "@ir/$/models/Node";
-import { noUnusedClasses } from "@rules/yagni/noUnusedFeatures/noUnusedClasses";
-import { noUnusedFunctions } from "@rules/yagni/noUnusedFeatures/noUnusedFunctions";
-import { noUnusedVariables } from "@rules/yagni/noUnusedFeatures/noUnusedVariables";
-
+import { yagniRules } from "@rules/yagni";
 const file: IRFile = {
 	name: "test.ts",
 	extensions: ["ts"],
@@ -51,11 +50,23 @@ const file: IRFile = {
 	],
 };
 
-const rules = [noUnusedClasses, noUnusedFunctions, noUnusedVariables];
+const rules = [yagniRules]
 
-rules.forEach((rule) => {
-	const message = rule(file);
-	if (message) {
-		console.log(message);
-	}
-});
+const lres = lintFile(file, rules);
+
+console.log(JSON.stringify(lres, null, 2));
+
+let indent = 0;
+
+const print = (result: LintResult) => {
+	const char = result.isCorrect ? "✓" : "✗";
+	console.log(`${" ".repeat(indent)}${char} ${result.name}`);
+	indent += 2;
+	result.messages.forEach((message) => {
+		console.log(`${" ".repeat(indent)}[${message.level}] Line ${message.line}: ${message.message}`);
+	});
+	result.subrules.forEach(print);
+	indent -= 2;
+}
+
+lres.forEach(print);

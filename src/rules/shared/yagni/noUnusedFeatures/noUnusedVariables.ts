@@ -2,8 +2,9 @@ import { IRKind } from '@ir/models/Node';
 import { Level, type Message } from '@rules/models/message/model';
 import type { Rule } from '@rules/models/rule/model';
 import { flattenNodes } from '../utils';
+import { createRule } from '@rules/models/rule/service';
 
-export const noUnusedVariables: Rule = (file) => {
+export const noUnusedVariables: Rule = createRule('No unused variables', (file) => {
 	const messages: Message[] = [];
 	const allNodes = flattenNodes(file.program);
 	const declaredVariables = allNodes.filter((n) => n.kind === IRKind.Variable);
@@ -22,4 +23,4 @@ export const noUnusedVariables: Rule = (file) => {
 	}
 
 	return messages;
-};
+});

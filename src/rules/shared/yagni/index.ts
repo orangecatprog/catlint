@@ -1,7 +1,4 @@
-import { createGroup } from '@rules/$/models/group/service';
-import type { Group } from '@rules/$/models/group/model';
+import { createRule } from '@rules/models/rule/service';
 import { noUnusedFeatures } from './noUnusedFeatures';
 
-export const yagniGroup: Group = createGroup('YAGNI', (_push, pushGroup) => {
-	pushGroup(noUnusedFeatures);
-});
+export const yagniRules = createRule('YAGNI', () => [], [noUnusedFeatures]);

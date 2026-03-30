@@ -1,14 +1,22 @@
 import type { LintResult } from '@core/models/lintResult/model';
 import type { IRFile } from '@ir/models/File';
-import type { Group } from '@rules/models/group/model';
+import type { Rule } from '@rules/models/rule/model';
 
-export function lint(file: IRFile, rules: Group[]): LintResult[] {
-	const results: LintResult[] = [];
+export function travelFile(file: IRFile) {
+	const travelRule: (rule: Rule) => LintResult = (rule) => {
+		return {
+			name: rule.name,
+			messages: rule.fn(file),
+			subrules: rule.subrules.map(travelRule),
+			isCorrect:
+				rule.fn(file).length === 0 && rule.subrules.every((r) => travelRule(r).isCorrect),
+		};
+	};
+	return travelRule;
+}
 
-	rules.forEach((group) => {
-		const messages = group.rules.flatMap((rule) => rule(file));
-		results.push({ ...group, messages });
-	});
+export function lintFile(file: IRFile, rules: Rule[]): LintResult[] {
+	const results: LintResult[] = rules.map((rule) => travelFile(file)(rule));
 
 	return results;
 }
