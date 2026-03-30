@@ -1,7 +1,7 @@
 export enum Level {
-	Error,
-	Warning,
-	Info,
+	Error = 'ERROR',
+	Warning = 'WARNING',
+	Info = 'INFO',
 }
 
 export interface Message {

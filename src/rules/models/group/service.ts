@@ -1,4 +1,4 @@
-import type { Rule } from 'src/rules/rule/model';
+import type { Rule } from '@rules/$/models/rule/model';
 import type { Group } from './model';
 
 export const createGroup = (

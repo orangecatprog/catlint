@@ -1,4 +1,4 @@
-import type { Rule } from 'src/rules/rule/model';
+import type { Rule } from '@rules/$/models/rule/model';
 
 export interface Group {
 	name: string;

@@ -1,7 +1,6 @@
 {
 	"compilerOptions": {
 		"baseUrl": ".",
-		// Environment setup & latest features
 		"lib": ["ESNext"],
 		"target": "ESNext",
 		"module": "ESNext",
@@ -9,20 +8,17 @@
 		"jsx": "react-jsx",
 		"allowJs": true,
 
-		// Bundler mode
 		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
 		"verbatimModuleSyntax": true,
 		"noEmit": true,
 
-		// Best practices
 		"strict": true,
 		"skipLibCheck": true,
 		"noFallthroughCasesInSwitch": true,
 		"noUncheckedIndexedAccess": true,
 		"noImplicitOverride": true,
 
-		// Some stricter flags (disabled by default)
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noPropertyAccessFromIndexSignature": false,
@@ -30,6 +26,9 @@
 			"@core/*": ["./src/core/shared/*"],
 			"@rules/*": ["src/rules/shared/*"],
 			"@ir/*": ["./src/ir/shared/*"],
+			"@core/models/*": ["./src/core/models/*"],
+			"@rules/models/*": ["src/rules/models/*"],
+			"@ir/models/*": ["./src/ir/models/*"],
 			"@ir/$/*": ["./src/ir/*"],
 			"@rules/$/*": ["src/rules/*"]
 		}

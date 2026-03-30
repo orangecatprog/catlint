@@ -1,0 +1,21 @@
+name: Security Check
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+
+jobs:
+    check-eval:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+
+            - name: Fail if eval is used
+              run: |
+                  if grep -R "eval(" .; then
+                    echo "❌ eval() is not allowed"
+                    exit 1
+                  fi

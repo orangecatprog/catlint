@@ -1,4 +1,4 @@
-import { createGroup } from '@rules/$/group/service';
+import { createGroup } from '@rules/$/models/group/service';
 import { noUnusedClasses } from './noUnusedClasses';
 import { noUnusedFunctions } from './noUnusedFunctions';
 import { noUnusedVariables } from './noUnusedVariables';

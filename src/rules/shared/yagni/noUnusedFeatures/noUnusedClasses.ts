@@ -1,9 +1,10 @@
-import { IRKind } from '@ir/Node';
-import { Level } from '@rules/$/message/model';
-import type { Rule } from 'src/rules/rule/model';
+import { IRKind } from '@ir/models/Node';
+import { Level, type Message } from '@rules/models/message/model';
+import type { Rule } from '@rules/models/rule/model';
 import { flattenNodes } from '../utils';
 
 export const noUnusedClasses: Rule = (file) => {
+	const messages: Message[] = [];
 	const allNodes = flattenNodes(file.program);
 	const declaredClasses = allNodes.filter((n) => n.kind === IRKind.Class);
 	const referencedNames = new Set(
@@ -12,13 +13,13 @@ export const noUnusedClasses: Rule = (file) => {
 
 	for (const cls of declaredClasses) {
 		if (!referencedNames.has(cls.name)) {
-			return {
+			messages.push({
 				message: `Class '${cls.name}' is declared but never used.`,
 				line: cls.line,
-				level: Level.Warning,
-			};
+				level: Level.Error,
+			});
 		}
 	}
 
-	return null;
+	return messages;
 };
