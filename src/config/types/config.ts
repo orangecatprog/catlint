@@ -1,3 +1,4 @@
+import type { IRParser } from '@ir/models/IRParser';
 import type { Rule } from '@rules/models/rule/model';
 
 export interface Config {
@@ -8,7 +9,7 @@ export interface Config {
 	};
 	parsers: {
 		pattern: string;
-		parser: (file: string) => string;
+		parser: IRParser;
 	}[];
 	rules: Rule[];
 }
