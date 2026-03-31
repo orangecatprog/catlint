@@ -5,13 +5,13 @@ labels: ["bug"]
 
 body:
   - type: input
-  id: name
-  attributes:
-      label: Name
-      description: The name of the bug
-      placeholder: Bug name
-  validations:
-      required: true
+    id: name
+    attributes:
+        label: Name
+        description: The name of the bug
+        placeholder: Bug name
+    validations:
+        required: true
 
   - type: input
     id: version
@@ -24,9 +24,7 @@ body:
 
   - type: markdown
     attributes:
-        label: Description
         description: A clear and concise description of the bug
-        placeholder: Excepted & Actual behavior, Steps to reproduce, Screenshots, etc.
     validations:
         required: true
 
