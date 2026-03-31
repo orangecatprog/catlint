@@ -7,32 +7,35 @@ body:
   - type: input
     id: name
     attributes:
-        label: Name
-        description: The name of the bug
-        placeholder: Bug name
+      label: "Name"
+      description: "The name of the bug"
+      placeholder: "Bug name"
     validations:
-        required: true
+      required: true
 
   - type: input
     id: version
     attributes:
-        label: Version
-        description: The version of the project
-        placeholder: v1.0.0
+      label: "Version"
+      description: "The version of the project"
+      placeholder: "v1.0.0"
     validations:
-        required: true
+      required: true
 
-  - type: markdown
+  - type: textarea
+    id: description
     attributes:
-        description: A clear and concise description of the bug
+      label: "Description"
+      description: "Expected & Actual behavior, Steps to reproduce, Screenshots, etc."
+      placeholder: "Describe the bug in detail"
     validations:
-        required: true
+      required: true
 
   - type: textarea
     id: logs
     attributes:
-        label: Relevant log output
-        description: Please copy and paste any relevant log output. This will be automatically formatted into code, so no need for backticks.
-        render: shell
+      label: "Relevant log output"
+      description: "Paste logs here"
+      render: shell
     validations:
-        required: false
+      required: false
