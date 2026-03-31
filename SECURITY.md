@@ -1,4 +1,4 @@
-# Security Policy for ProjectName
+# Security Policy for CatLint
 
 ## Supported Versions
 
