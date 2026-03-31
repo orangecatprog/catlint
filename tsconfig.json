@@ -21,16 +21,12 @@
 
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
-		"noPropertyAccessFromIndexSignature": false,
+
 		"paths": {
-			"@core/*": ["./src/core/shared/*"],
-			"@rules/*": ["src/rules/shared/*"],
-			"@ir/*": ["./src/ir/shared/*"],
-			"@core/models/*": ["./src/core/models/*"],
-			"@rules/models/*": ["src/rules/models/*"],
-			"@ir/models/*": ["./src/ir/models/*"],
-			"@ir/$/*": ["./src/ir/*"],
-			"@rules/$/*": ["src/rules/*"]
+			"@core/*": ["./src/core/*"],
+			"@rules/*": ["./src/rules/*"],
+			"@ir/*": ["./src/ir/*"],
+			"@config/*": ["./src/config/*"]
 		}
 	}
 }

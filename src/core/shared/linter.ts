@@ -1,9 +1,9 @@
 import type { LintResult } from '@core/models/lintResult/model';
 import type { IRFile } from '@ir/models/File';
-import type { Rule } from '@rules/models/rule/model';
+import type { AdaptedRule } from '@rules/models/rule/model';
 
 export function travelFile(file: IRFile) {
-	const travelRule: (rule: Rule) => LintResult = (rule) => {
+	const travelRule: (rule: AdaptedRule) => LintResult = (rule) => {
 		return {
 			name: rule.name,
 			messages: rule.fn(file),
@@ -15,7 +15,7 @@ export function travelFile(file: IRFile) {
 	return travelRule;
 }
 
-export function lintFile(file: IRFile, rules: Rule[]): LintResult[] {
+export function lintFile(file: IRFile, rules: AdaptedRule[]): LintResult[] {
 	const results: LintResult[] = rules.map((rule) => travelFile(file)(rule));
 
 	return results;
