@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
 import { init } from './commands/init';
+import { lint } from './commands/lint';
 
 const program = new Command();
 
@@ -10,3 +11,10 @@ program
 	.command('init')
 	.description('Inits CatLint in your current project folder')
 	.action(async () => await init());
+
+program
+	.command('lint')
+	.description('Lints the current project')
+	.action(async () => await lint());
+
+program.parse();

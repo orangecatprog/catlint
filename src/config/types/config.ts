@@ -16,3 +16,12 @@ export interface Config {
 export interface NormalizedConfig extends Config {
 	rules: AdaptedRule[];
 }
+
+export const defaultConfig: NormalizedConfig = {
+	lint: {
+		includes: ['**/*.ts'],
+		excludes: ['node_modules/**'],
+	},
+	parsers: [],
+	rules: [],
+};

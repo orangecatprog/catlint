@@ -1,7 +1,10 @@
 import inquirer from 'inquirer';
+import fs from 'fs';
+import { defaultConfig } from '@config/index';
+import { inspect } from 'util';
 
 export const init = async () => {
-	inquirer.prompt([
+	const { useTypescript } = await inquirer.prompt([
 		{
 			type: 'confirm',
 			name: 'useTypescript',
@@ -9,4 +12,12 @@ export const init = async () => {
 			default: true,
 		},
 	]);
+
+	fs.writeFileSync(
+		`catlint.config.${useTypescript ? 'ts' : 'js'}`,
+		`import { defineConfig } from 'catlint/config';
+
+export default defineConfig(${inspect(defaultConfig)});
+`,
+	);
 };
