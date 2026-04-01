@@ -1,13 +1,14 @@
-import type { IRFile } from '@ir/models/File';
-import type { Message } from '../message/model';
-import type { Rule } from './model';
+import type { Rule, RuleFn } from './model';
 
 export const createRule = (
 	name: string,
-	fn: (file: IRFile) => Message[],
-	subrules: Rule[] = [],
-): Rule => ({
-	name,
-	fn,
-	subrules,
-});
+	fn: (subrule: (subrule: Rule) => void) => RuleFn,
+): Rule => {
+	const subrules: Rule[] = [];
+	const ruleFn: RuleFn = fn((subrule: Rule) => subrules.push(subrule));
+	return {
+		name,
+		fn: ruleFn,
+		subrules,
+	};
+};
