@@ -1,5 +1,5 @@
 import inquirer from 'inquirer';
-import fs from 'fs';
+import * as fs from 'fs';
 import { defaultConfig } from '@config/index';
 import { inspect } from 'util';
 

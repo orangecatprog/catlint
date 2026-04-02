@@ -1,6 +1,6 @@
 import type { NormalizedConfig } from '@config/types/config';
 import { adaptConfig } from '@config/types/configAdapter';
-import path from 'path';
+import * as path from 'path';
 import { pathToFileURL } from 'url';
 
 export const loadConfigFromFile = async (filePath: string): Promise<NormalizedConfig | null> => {

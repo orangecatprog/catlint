@@ -2,7 +2,7 @@ import type { NormalizedConfig } from '@config/types/config';
 import { loadFiles } from 'src/shared/pattern/loadFiles';
 import { lintFile } from './linter';
 import type { IRFile } from '@ir/models/File';
-import fs from 'fs';
+import * as fs from 'fs';
 import { Minimatch } from 'minimatch';
 
 export const lintProject = async (config: NormalizedConfig, projectDir: string) => {

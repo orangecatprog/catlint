@@ -9,7 +9,6 @@
 		"outDir": "dist",
 		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
-		"verbatimModuleSyntax": true,
 		"noEmit": true,
 
 		"strict": true,
@@ -27,6 +26,8 @@
 			"@ir/*": ["./src/ir/*"],
 			"@config/*": ["./src/config/*"],
 			"src/*": ["./src/*"]
-		}
+		},
+		"declaration": true,
+		"emitDeclarationOnly": true
 	}
 }
