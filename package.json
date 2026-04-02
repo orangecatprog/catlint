@@ -1,13 +1,25 @@
 {
 	"name": "catlint",
-	"module": "src/index.ts",
+	"version": "1.2.1",
 	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"bin": {
+		"catlint": "./dist/cli/index.js"
+	},
+	"exports": {
+		".": {
+			"import": "./dist/index.js",
+			"require": "./dist/index.cjs",
+			"types": "./dist/index.d.ts"
+		}
+	},
 	"scripts": {
+		"build": "tsup",
 		"lint": "eslint src --ext .ts",
 		"format": "prettier --write src",
-		"check": "bun run lint && bun run format",
-		"test": "vitest",
-		"prepare": "husky"
+		"test": "vitest"
 	},
 	"devDependencies": {
 		"@eslint/css": "^1.0.0",
@@ -25,23 +37,17 @@
 		"prettier": "3.8.1",
 		"typescript-eslint": "^8.57.2",
 		"vitest": "^4.1.1"
-	},
+  },
 	"peerDependencies": {
 		"typescript": "^5"
+	},
+	"devDependencies": {
+		"tsup": "^8.5.1"
 	},
 	"lint-staged": {
 		"*.{ts,js}": [
 			"eslint --fix",
 			"prettier --write"
 		]
-	},
-	"dependencies": {
-		"catlint": ".",
-		"chalk": "^5.6.2",
-		"commander": "^14.0.3",
-		"glob": "^13.0.6",
-		"inquirer": "^13.3.2",
-		"jiti": "^2.6.1",
-		"minimatch": "^10.2.5"
 	}
 }

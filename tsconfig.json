@@ -1,13 +1,12 @@
 {
 	"compilerOptions": {
-		"baseUrl": ".",
 		"lib": ["ESNext"],
 		"target": "ESNext",
 		"module": "ESNext",
 		"moduleDetection": "force",
 		"jsx": "react-jsx",
 		"allowJs": true,
-
+		"outDir": "dist",
 		"moduleResolution": "bundler",
 		"allowImportingTsExtensions": true,
 		"verbatimModuleSyntax": true,
@@ -26,7 +25,8 @@
 			"@core/*": ["./src/core/*"],
 			"@rules/*": ["./src/rules/*"],
 			"@ir/*": ["./src/ir/*"],
-			"@config/*": ["./src/config/*"]
+			"@config/*": ["./src/config/*"],
+			"src/*": ["./src/*"]
 		}
 	}
 }
